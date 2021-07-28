@@ -19,6 +19,8 @@ const getNotes = (userId) => {
   notesRef.on('value', (snapshot) => {
     const data = snapshot.val();
     renderDataAsHtml(data);
+    const arrayOfObj = Object.entries(data).map((e) => ( { [e[0]]: e[1] } ));
+    console.log(arrayOfObj);
   });
 };
 
@@ -31,6 +33,8 @@ const renderDataAsHtml = (data) => {
   };
   // Inject our string of HTML into our viewNotes.html page
   document.querySelector('#app').innerHTML = cards;
+
+  console.log(data);
 };
 
 const createCard = (note, noteId) => {
